@@ -1,0 +1,81 @@
+Força
+false
+Modificador
+Valor
+-
+Destreza
+false
+Modificador
+Valor
+-
+Constituição
+false
+Modificador
+Valor
+-
+Inteligencia
+false
+Modificador
+Valor
+-
+Sabedoria
+false
+Modificador
+Valor
+-
+Carisma
+false
+Modificador
+Valor
+-
+Espaços de magia
+true
+Espaço lvl 1
+Espaço lvl 2
+Espaço lvl 3
+Espaço lvl 4
+Espaço lvl 5
+Espaço lvl 6
+Espaço lvl 7
+Espaço lvl 8
+Espaço lvl 9
+-
+=-=
+
+Molde de todos os atributos:
+
+Nome do atributo 1
+Se opcional é verdadeiro ou não
+Conteudo 1
+Conteudo 2
+Conteudo 3
+...
+Conteudo n1
+-
+Nome do atributo 2
+Se opcional é verdadeiro ou não
+Conteudo 1
+Conteudo 2
+Conteudo 3
+...
+Conteudo n2
+-
+Nome do atributo 3
+Se opcional é verdadeiro ou não
+Conteudo 1
+Conteudo 2
+Conteudo 3
+...
+Conteudo n3
+-
+...
+-
+Nome do atributo m
+Se opcional é verdadeiro ou não
+Conteudo 1
+Conteudo 2
+Conteudo 3
+...
+Conteudo nm
+-
+=-=
