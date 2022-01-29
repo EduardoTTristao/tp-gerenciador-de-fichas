@@ -14,10 +14,10 @@ public class Principal {
 
         Jogador jogador1 = new Jogador("Fulano", true);
         Jogador jogador2 = new Jogador("Ciclano", false);
-        jogador1.criaPersonagem("dnd", "Pedrinho");
-        jogador1.criaPersonagem("dnd", "Huguinho");
-        jogador2.criaPersonagem("dnd", "Zezinho");
-        jogador2.criaPersonagem("dnd", "Huguinho");
+        jogador1.criaPersonagem("D&D", "Pedrinho");
+        jogador1.criaPersonagem("D&D", "Huguinho");
+        jogador2.criaPersonagem("D&D", "Zezinho");
+        jogador2.criaPersonagem("D&D", "Huguinho");
 
         assert false;
         listaJogadores1.add(jogador1);
@@ -31,7 +31,7 @@ public class Principal {
         System.out.println("\nIMPRIME MESA\n");
         mesa1.imprimeMesa(listaJogadores1.get(0));
         System.out.println("\nIMPRIME PERSONAGEM\n");
-        for(Personagem personagem: listaPersonagens1){System.out.println(personagem.nome);}
+        for(Personagem personagem: listaPersonagens1){personagem.showStats();}
 
 
     }

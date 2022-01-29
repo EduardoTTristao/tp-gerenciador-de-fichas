@@ -12,7 +12,7 @@ public class Mesa {
     }
 
     public void imprimeMesa(Jogador fjogador){  //imprime a mesa com jogadores e personagens caso o solicitante seja mestre
-        if(fjogador.getMestre()){
+        if(fjogador.isMestre()){
             for (Jogador jogador : jogadores){
                 jogador.imprimeJogador();
                 for(Personagem personagem: jogador.getPersonagens()){
