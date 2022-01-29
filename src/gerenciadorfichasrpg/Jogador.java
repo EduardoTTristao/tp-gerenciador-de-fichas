@@ -14,7 +14,7 @@ public class Jogador {
         nome = fNomeJogador;
     }
 
-    public void criaPersonagem(String fsistema, String fNomePersonagem) throws FileNotFoundException { //cria e adiciona um eprsonagem ao jogador
+    public void criaPersonagem(String fsistema, String fNomePersonagem)  { //cria e adiciona um eprsonagem ao jogador
         personagens.add(new Personagem(fsistema, fNomePersonagem, isMestre, nome));
     }
 
@@ -26,7 +26,7 @@ public class Jogador {
         else System.out.println("Não");}
 
     //gets
-    public Boolean getMestre(){return isMestre;}
+    public Boolean isMestre(){return isMestre;}
     public ArrayList<Personagem> getPersonagens(){return personagens;}
 
 }
