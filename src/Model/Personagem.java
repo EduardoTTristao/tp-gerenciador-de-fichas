@@ -1,5 +1,6 @@
-package gerenciadorfichasrpg;
+package Model;
 
+import Model.AtributoDND;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Personagem {
         private String sistemaFicha; //sistema dessa ficha
         private boolean isNPC; //se o personagem e Non-player-caracter ou player-caracter
         private String donoDoPersonagem; //nome do jogador ou o nome do mestre que possui aquele personagem
-        private ArrayList<AtributoDND> atributos = new ArrayList<AtributoDND>(); //os atributos daquele personagem
+        private final ArrayList<Atributo> atributos = new ArrayList(); //os atributos daquele personagem
     
         //para inicializar um personagem de um sistema armazenado
         public Personagem (String sistema, String nome, Boolean isNPC, String donoDoPersonagem) {
@@ -29,7 +30,7 @@ public class Personagem {
             this.sistemaFicha = sistema; //determina o sistema da ficha
             
             //determina os campos de atributo a serem preenchidos dependendo do sistema
-            if (sistema == "D&D") {
+            if ("D&D".equals(sistema)) {
                 atributos.add(new AtributoDND("Força"));
                 atributos.add(new AtributoDND("Destreza"));
                 atributos.add(new AtributoDND("Constituição"));
@@ -37,46 +38,52 @@ public class Personagem {
                 atributos.add(new AtributoDND("Sabedoria"));
                 atributos.add(new AtributoDND("Carisma"));
             }
-            if (sistema == "GURPS") {
-                atributos.add(new AtributoDND("ST"));
-                atributos.add(new AtributoDND("DX"));
-                atributos.add(new AtributoDND("IQ"));
-                atributos.add(new AtributoDND("HT"));
+            if ("GURPS".equals(sistema)) {
+                atributos.add(new AtributoGURPS("ST"));
+                atributos.add(new AtributoGURPS("DX"));
+                atributos.add(new AtributoGURPS("IQ"));
+                atributos.add(new AtributoGURPS("HT"));
                 
-                atributos.add(new AtributoDND("per"));
-                atributos.add(new AtributoDND("PV"));
-                atributos.add(new AtributoDND("vont"));
-                atributos.add(new AtributoDND("PF"));
+                atributos.add(new AtributoGURPS("per"));
+                atributos.add(new AtributoGURPS("PV"));
+                atributos.add(new AtributoGURPS("vont"));
+                atributos.add(new AtributoGURPS("PF"));
             }
         }
         
         public ArrayList<String> retornaNomeAtributos(){
-            ArrayList<String> nomeAtributos = new ArrayList<String>();
-            for (AtributoDND atr : atributos){
+            ArrayList<String> nomeAtributos = new ArrayList();
+            for (Atributo atr : atributos){
                 nomeAtributos.add(atr.getNome());
             }
             return nomeAtributos;
         }
         
         public void setAtr(String atrNome, int valor){
-            for (AtributoDND atr : atributos){ //define o valor de um determinado atributo
+            for (Atributo atr : atributos){ //define o valor de um determinado atributo
                 if (atr.getNome().equals(atrNome)){
                     atr.setValor(valor);
                 }
             }
         }
         
-        //exibe todas as caracteristicas armazenadas do personagem
-        public void showStats(){
-            System.out.println("Nome do personagem:" + nome); //exibe o nome do personagem
-            if(!isNPC){System.out.println("Nome do jogador:" + donoDoPersonagem);} //exibe o nome do jogador
-            System.out.print("Tipo: ");
-            if (isNPC)System.out.println("NPC"); //verifica se e npc ou pc e retorna
-            else System.out.println("PC");
+        //retorna como string todas as caracteristicas armazenadas do personagem
+        public String toString(){
+            String ficha;
+            ficha = "Nome do personagem:" + nome + "\n"; // o nome do personagem
+            if(!isNPC){ficha += "Nome do jogador:" + donoDoPersonagem + "\n";} // o nome do jogador
+            ficha += ficha + "Tipo: ";
+            if (isNPC)ficha += "NPC\n"; //verifica se e npc ou pc e depois preenche
+            else ficha += "PC\n";
             
-            for (AtributoDND atr : atributos){ //exibe todos os atributos e seus respectivos campos preenchidos
-                atr.showAtr();
+            for (Atributo atr : atributos){ // todos os atributos e seus respectivos campos preenchidos
+                ficha += "\n" + atr.toString() + "\n";
             }
+            return ficha;
         }
+
+    public String getNome() {
+        return nome;
+    }
 }
 

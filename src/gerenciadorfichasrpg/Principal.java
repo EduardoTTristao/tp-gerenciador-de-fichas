@@ -1,11 +1,14 @@
 package gerenciadorfichasrpg;
 
+import Model.Personagem;
+import Model.Mesa;
+import Model.Jogador;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) throws FileNotFoundException {
-
+/*
         ArrayList<Jogador> listaJogadores1 = new ArrayList<Jogador>();
         ArrayList<Personagem> listaPersonagens1 = new ArrayList<Personagem>();
         ArrayList<Mesa> listaMesas = new ArrayList<Mesa>();
@@ -33,7 +36,7 @@ public class Principal {
         System.out.println("\nIMPRIME PERSONAGEM\n");
         for(Personagem personagem: listaPersonagens1){personagem.showStats();}
 
-
+*/
     }
 
 }
