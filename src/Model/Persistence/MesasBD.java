@@ -17,4 +17,11 @@ public class MesasBD {
             if (mesa.getNome().equals(nome)) return mesa;
         return null;
     }
+    
+    public ArrayList<String> getNomes(){
+        ArrayList<String> mesas = new ArrayList<>();
+        for (Mesa mesa : this.mesas)
+            mesas.add(mesa.getNome());
+        return mesas;
+    }
 }

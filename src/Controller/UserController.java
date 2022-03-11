@@ -1,5 +1,6 @@
 package Controller;
 
+import Exceptions.PersonagemInexistenteException;
 import Exceptions.SenhasDiferentesException;
 import Exceptions.SenhaFracaException;
 import Exceptions.UsuarioNaoCadastradoException;
@@ -8,6 +9,7 @@ import Exceptions.UsuarioJaCadastradoException;
 import Model.Entidade.Personagem;
 import Model.Entidade.Usuario;
 import Model.Persistence.UserBD;
+import java.util.ArrayList;
 
 public class UserController {
     private UserBD bd;
@@ -30,6 +32,17 @@ public class UserController {
         if (user == null) 
             throw new UsuarioNaoCadastradoException(nick);
         user.criaPersonagem(new Personagem(sistema,nomeDoPersonagem,user.getNome()));
+    }
+    
+    public ArrayList<String> getIdsPersos(Usuario user){
+        return user.getPersonagens().listId();
+    }
+    
+    public Personagem getPerso(String nick, String persoId) throws UsuarioNaoCadastradoException, PersonagemInexistenteException{
+        Usuario user = bd.retornaJogador(nick);
+        if (user == null) 
+            throw new UsuarioNaoCadastradoException(nick);
+        return user.getPersonagens().getPersonagem(persoId);
     }
 
     private boolean validarSenha(String senha) {
