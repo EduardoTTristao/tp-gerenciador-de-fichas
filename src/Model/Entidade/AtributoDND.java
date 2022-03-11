@@ -1,11 +1,4 @@
-package Model;
-
-import java.util.ArrayList;
-
-/**
- *
- * @author eduar
- */
+package Model.Entidade;
 
 public class AtributoDND extends Atributo{
 

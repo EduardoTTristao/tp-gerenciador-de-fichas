@@ -1,5 +1,7 @@
 
-package Model;
+package Model.Entidade;
+
+import Exceptions.AtributoNegativoException;
 
 public abstract class Atributo {
     private final String nome; //nome do atributo
@@ -19,9 +21,9 @@ public abstract class Atributo {
     }
 
     //preenche o valor do atributo
-    public void setValor(int valor) {
+    public void setValor(int valor) throws AtributoNegativoException {
+        if (valor < 0)
+            throw new AtributoNegativoException(valor);
         this.valor = valor;
     }
-    
-    public abstract String toString();
 }

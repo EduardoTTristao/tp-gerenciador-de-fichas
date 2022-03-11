@@ -1,8 +1,8 @@
 package gerenciadorfichasrpg;
 
-import Model.Personagem;
-import Model.Mesa;
-import Model.Jogador;
+import Model.Entidade.Personagem;
+import Model.Entidade.Mesa;
+import Model.Entidade.Usuario;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
