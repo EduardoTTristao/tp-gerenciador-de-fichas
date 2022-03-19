@@ -1,14 +1,14 @@
 package Controller;
 
-import Exceptions.AcessoNegadoException;
+import Model.Entidade.Exceptions.AcessoNegadoException;
 import Model.Entidade.Usuario;
 import Model.Entidade.Mesa;
 import Model.Persistence.MesasBD;
-import Exceptions.MesaInexistenteException;
-import Exceptions.SistemaNaoCadastradoException;
-import Exceptions.MesaCadastradaException;
-import Exceptions.PersonagemInexistenteException;
-import Exceptions.UsuarioJaCadastradoException;
+import Model.Entidade.Exceptions.MesaInexistenteException;
+import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
+import Model.Entidade.Exceptions.MesaCadastradaException;
+import Model.Entidade.Exceptions.PersonagemInexistenteException;
+import Model.Entidade.Exceptions.UsuarioJaCadastradoException;
 import Model.Entidade.Personagem;
 import Model.Persistence.PersonagemBD;
 import java.util.ArrayList;

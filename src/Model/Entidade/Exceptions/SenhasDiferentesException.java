@@ -1,5 +1,5 @@
 
-package Exceptions;
+package Model.Entidade.Exceptions;
 
 public class SenhasDiferentesException extends Exception {
 

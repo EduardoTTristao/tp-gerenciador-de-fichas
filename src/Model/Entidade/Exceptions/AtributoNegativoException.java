@@ -1,4 +1,4 @@
-package Exceptions;
+package Model.Entidade.Exceptions;
 
 public class AtributoNegativoException extends Exception {
     private final int valor;

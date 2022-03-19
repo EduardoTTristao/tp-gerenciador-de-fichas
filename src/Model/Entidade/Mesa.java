@@ -1,7 +1,7 @@
 package Model.Entidade;
 
-import Exceptions.AcessoNegadoException;
-import Exceptions.UsuarioJaCadastradoException;
+import Model.Entidade.Exceptions.AcessoNegadoException;
+import Model.Entidade.Exceptions.UsuarioJaCadastradoException;
 import Model.Persistence.PersonagemBD;
 import Model.Persistence.UserBD;
 import java.util.ArrayList;

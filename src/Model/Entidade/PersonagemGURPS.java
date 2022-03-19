@@ -1,9 +1,9 @@
 package Model.Entidade;
 
-import Exceptions.CaracteristicaJaAdicionadaException;
-import Exceptions.CaracteristicaNaoAdicionadaException;
-import Exceptions.CustoIncompativelException;
-import Exceptions.SistemaNaoCadastradoException;
+import Model.Entidade.Exceptions.CaracteristicaJaAdicionadaException;
+import Model.Entidade.Exceptions.CaracteristicaNaoAdicionadaException;
+import Model.Entidade.Exceptions.CustoIncompativelException;
+import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
 import java.util.ArrayList;
 
 public class PersonagemGURPS extends Personagem{

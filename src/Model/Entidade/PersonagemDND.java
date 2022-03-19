@@ -1,6 +1,6 @@
 package Model.Entidade;
 
-import Exceptions.SistemaNaoCadastradoException;
+import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;

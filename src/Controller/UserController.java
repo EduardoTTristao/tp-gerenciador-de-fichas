@@ -1,11 +1,11 @@
 package Controller;
 
-import Exceptions.PersonagemInexistenteException;
-import Exceptions.SenhasDiferentesException;
-import Exceptions.SenhaFracaException;
-import Exceptions.UsuarioNaoCadastradoException;
-import Exceptions.SistemaNaoCadastradoException;
-import Exceptions.UsuarioJaCadastradoException;
+import Model.Entidade.Exceptions.PersonagemInexistenteException;
+import Model.Entidade.Exceptions.SenhasDiferentesException;
+import Model.Entidade.Exceptions.SenhaFracaException;
+import Model.Entidade.Exceptions.UsuarioNaoCadastradoException;
+import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
+import Model.Entidade.Exceptions.UsuarioJaCadastradoException;
 import Model.Entidade.Personagem;
 import Model.Entidade.PersonagemDND;
 import Model.Entidade.PersonagemGURPS;

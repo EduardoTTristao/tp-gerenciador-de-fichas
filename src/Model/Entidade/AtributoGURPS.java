@@ -1,6 +1,6 @@
 package Model.Entidade;
 
-import Exceptions.AtrInexistenteException;
+import Model.Entidade.Exceptions.AtrInexistenteException;
 
 public class AtributoGURPS extends Atributo{
 

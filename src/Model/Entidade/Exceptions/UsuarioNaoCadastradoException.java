@@ -1,4 +1,4 @@
-package Exceptions;
+package Model.Entidade.Exceptions;
 
 public class UsuarioNaoCadastradoException extends Exception {
     private final String nick;

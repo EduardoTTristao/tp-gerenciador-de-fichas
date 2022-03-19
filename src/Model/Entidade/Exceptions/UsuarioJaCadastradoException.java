@@ -1,4 +1,4 @@
-package Exceptions;
+package Model.Entidade.Exceptions;
 
 import Model.Entidade.Usuario;
 

@@ -1,7 +1,7 @@
 
 package Model.Entidade;
 
-import Exceptions.AtributoNegativoException;
+import Model.Entidade.Exceptions.AtributoNegativoException;
 
 public abstract class Atributo {
     private final String nome; //nome do atributo

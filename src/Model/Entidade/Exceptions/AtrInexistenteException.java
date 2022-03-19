@@ -1,4 +1,4 @@
-package Exceptions;
+package Model.Entidade.Exceptions;
 
 public class AtrInexistenteException extends Exception {
     private final String atrNome;

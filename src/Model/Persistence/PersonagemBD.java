@@ -1,6 +1,6 @@
 package Model.Persistence;
 
-import Exceptions.PersonagemInexistenteException;
+import Model.Entidade.Exceptions.PersonagemInexistenteException;
 import Model.Entidade.Personagem;
 import java.util.ArrayList;
 

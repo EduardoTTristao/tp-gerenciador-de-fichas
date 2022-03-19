@@ -1,4 +1,4 @@
-package Exceptions;
+package Model.Entidade.Exceptions;
 
 public class SistemaNaoCadastradoException extends Exception{
     private final String sistemaPedido;

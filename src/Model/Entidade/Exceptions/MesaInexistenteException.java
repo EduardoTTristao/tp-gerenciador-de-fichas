@@ -1,4 +1,4 @@
-package Exceptions;
+package Model.Entidade.Exceptions;
 
 public class MesaInexistenteException extends Exception {
     private final String mesaInexistente;

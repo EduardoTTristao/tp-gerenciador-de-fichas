@@ -1,10 +1,10 @@
 package Model.Entidade;
 
-import Exceptions.AtrInexistenteException;
-import Exceptions.AtributoNegativoException;
+import Model.Entidade.Exceptions.AtrInexistenteException;
+import Model.Entidade.Exceptions.AtributoNegativoException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import Exceptions.SistemaNaoCadastradoException;
+import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
 import java.util.UUID;
 
 public abstract class Personagem {
