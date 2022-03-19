@@ -1,11 +1,16 @@
 package Model.Entidade;
 
+import Exceptions.CaracteristicaJaAdicionadaException;
+import Exceptions.CaracteristicaNaoAdicionadaException;
+import Exceptions.CustoIncompativelException;
 import Exceptions.SistemaNaoCadastradoException;
 import java.util.ArrayList;
 
 public class PersonagemGURPS extends Personagem{
     private int fadiga;
     private int fadigaAtual;
+    private final ArrayList<Caracteristica> desvantagens;
+    private final ArrayList<Caracteristica> vantagens;
 
     //para inicializar um personagem de um sistema armazenado
     public PersonagemGURPS (String nome, String donoDoPersonagem) throws SistemaNaoCadastradoException{
@@ -24,6 +29,9 @@ public class PersonagemGURPS extends Personagem{
         atributos.add(new AtributoGURPS("PF"));  
 
         super.setAtributos(atributos);
+        
+        desvantagens = new ArrayList<>();
+        vantagens = new ArrayList<>();
     }
 
     @Override
@@ -41,6 +49,72 @@ public class PersonagemGURPS extends Personagem{
 
     public void cansa() {
         this.fadiga -= 1;
+    }
+
+    public ArrayList<Caracteristica> getDesvantagens() {
+        return desvantagens;
+    }
+
+    public ArrayList<Caracteristica> getVantagens() {
+        return vantagens;
+    }
+    
+    public void addDesvantagem(String nome, String descricao, int custo) throws CaracteristicaJaAdicionadaException, CustoIncompativelException{
+        Caracteristica ex = null;
+        for (Caracteristica d : desvantagens){
+            if (d.getNome().equals(nome)){
+                ex = d;
+                break;
+            }
+        }
+        if (ex != null)
+            throw new CaracteristicaJaAdicionadaException(nome);
+        if (custo > 0)
+            throw new CustoIncompativelException("Desvantagem");
+        desvantagens.add(new Caracteristica(descricao, nome, custo));
+    }
+    
+    public void retDesvantagem(String nome) throws CaracteristicaNaoAdicionadaException{
+        Caracteristica ex = null;
+        for (Caracteristica d : desvantagens){
+            if (d.getNome().equals(nome)){
+                ex = d;
+                break;
+            }
+        }
+        if (ex != null)
+            desvantagens.remove(ex);
+        else
+            throw new CaracteristicaNaoAdicionadaException("Desvantagens");
+    }
+    
+    public void addVantagem(String nome, String descricao, int custo) throws CaracteristicaJaAdicionadaException, CustoIncompativelException{
+        Caracteristica ex = null;
+        for (Caracteristica d : vantagens){
+            if (d.getNome().equals(nome)){
+                ex = d;
+                break;
+            }
+        }
+        if (ex != null)
+            throw new CaracteristicaJaAdicionadaException(nome);
+        if (custo < 0)
+            throw new CustoIncompativelException("Vantagem");
+        vantagens.add(new Caracteristica(descricao, nome, custo));
+    }
+    
+    public void retVantagem(String nome) throws CaracteristicaNaoAdicionadaException{
+        Caracteristica ex = null;
+        for (Caracteristica d : vantagens){
+            if (d.getNome().equals(nome)){
+                ex = d;
+                break;
+            }
+        }
+        if (ex != null)
+            vantagens.remove(ex);
+        else
+            throw new CaracteristicaNaoAdicionadaException("Vantagens");
     }
 
     public void setFadigaAtual(int fadigaAtual) {
