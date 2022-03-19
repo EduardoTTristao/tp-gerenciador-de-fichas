@@ -17,8 +17,13 @@ import java.util.logging.Logger;
 
 public class MesasController {
     private MesasBD bd;
+    
+    public MesasController(){
+        bd = new MesasBD();
+    }
+    
     public void cadMesa (String nomeMesa, Usuario mestreInicial, String sistema) throws MesaCadastradaException, SistemaNaoCadastradoException{
-        if (!"D&D".equals(sistema) && !"GURPS".equals(sistema)) 
+        if (!"DND".equals(sistema) && !"GURPS".equals(sistema)) 
             throw new SistemaNaoCadastradoException(sistema);
         if (bd.retornaMesa(nomeMesa) != null) 
             throw new MesaCadastradaException();

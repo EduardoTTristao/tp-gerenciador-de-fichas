@@ -7,53 +7,28 @@ import java.util.Scanner;
 import Exceptions.SistemaNaoCadastradoException;
 import java.util.UUID;
 
-public class Personagem {
+public abstract class Personagem {
         private String nome; //nome do personagem
         private final String id;
-        private final String sistemaFicha; //sistema dessa ficha
         private boolean isNPC; //se o personagem e Non-player-caracter ou player-caracter
         private String donoDoPersonagem; //nome do jogador ou o nome do mestre que possui aquele personagem
-        private final ArrayList<Atributo> atributos = new ArrayList(); //os atributos daquele personagem
+        private ArrayList<Atributo> atributos = new ArrayList(); //os atributos daquele personagem
         private String mesa;
+        private int vida;
+        private int vidaAtual;
     
         //para inicializar um personagem de um sistema armazenado
-        public Personagem (String sistema, String nome, String donoDoPersonagem) throws SistemaNaoCadastradoException{
-            
-            Scanner scan = new Scanner(System.in);
-            scan.useDelimiter("\n");
+        public Personagem (String nome, String donoDoPersonagem) throws SistemaNaoCadastradoException{
             
             //atributos base
             id = UUID.randomUUID().toString();
             this.nome = nome; //armazena o nome do personagem
             this.donoDoPersonagem = donoDoPersonagem;  //determina o nome do jogador que possui aquele personagem
-            this.sistemaFicha = sistema; //determina o sistema da ficha
             this.mesa = "Sem mesa"; //inicializa sem pertencer a alguma mesa
-            
-            //determina os campos de atributo a serem preenchidos dependendo do sistema
-            if ("D&D".equals(sistema)) {
-                atributos.add(new AtributoDND("Força"));
-                atributos.add(new AtributoDND("Destreza"));
-                atributos.add(new AtributoDND("Constituição"));
-                atributos.add(new AtributoDND("Inteligência"));
-                atributos.add(new AtributoDND("Sabedoria"));
-                atributos.add(new AtributoDND("Carisma"));
-            }
-            else{
-                if ("GURPS".equals(sistema)) {
-                    atributos.add(new AtributoGURPS("ST"));
-                    atributos.add(new AtributoGURPS("DX"));
-                    atributos.add(new AtributoGURPS("IQ"));
-                    atributos.add(new AtributoGURPS("HT"));
-
-                    atributos.add(new AtributoGURPS("per"));
-                    atributos.add(new AtributoGURPS("PV"));
-                    atributos.add(new AtributoGURPS("vont"));
-                    atributos.add(new AtributoGURPS("PF"));
-                }
-                else {
-                    throw new SistemaNaoCadastradoException(sistema);
-                }
-            }
+        }
+        
+        public void setAtributos(ArrayList<Atributo> atributos){
+            this.atributos = atributos;
         }
         
         public ArrayList<String> retornaNomeAtributos(){
@@ -94,10 +69,6 @@ public class Personagem {
         return nome;
     }
 
-    public String getSistemaFicha() {
-        return sistemaFicha;
-    }
-
     public boolean isIsNPC() {
         return isNPC;
     }
@@ -123,7 +94,31 @@ public class Personagem {
     public String getId() {
         return id;
     }
+
+    public void setDono(String donoDoPersonagem) {
+        this.donoDoPersonagem = donoDoPersonagem;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public int getVidaAtual() {
+        return vidaAtual;
+    }
+
+    public void machuca(int dano) {
+        this.vidaAtual -= dano;
+    }
+
+    public void cura(int cura) {
+        this.vidaAtual += cura;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
     
-    
+    public abstract boolean isDead();
 }
 

@@ -19,9 +19,9 @@ public class MesasBD {
     }
     
     public ArrayList<String> getNomes(){
-        ArrayList<String> mesas = new ArrayList<>();
+        ArrayList<String> mesasN = new ArrayList<>();
         for (Mesa mesa : this.mesas)
-            mesas.add(mesa.getNome());
-        return mesas;
+            mesasN.add(mesa.getNome());
+        return mesasN;
     }
 }

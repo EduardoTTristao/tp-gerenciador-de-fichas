@@ -7,16 +7,23 @@ import Exceptions.UsuarioNaoCadastradoException;
 import Exceptions.SistemaNaoCadastradoException;
 import Exceptions.UsuarioJaCadastradoException;
 import Model.Entidade.Personagem;
+import Model.Entidade.PersonagemDND;
+import Model.Entidade.PersonagemGURPS;
 import Model.Entidade.Usuario;
 import Model.Persistence.UserBD;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class UserController {
     private UserBD bd;
     
+    public UserController(){
+        bd = new UserBD();
+    }
+    
     public void cadastrar(String login, String senha, String senhaRepetida) throws UsuarioJaCadastradoException, SenhaFracaException, SenhasDiferentesException{
         if (!senha.equals(senhaRepetida)) throw new SenhasDiferentesException();
-        if (!validarSenha(senha)) throw new SenhaFracaException();
+        validarSenha(senha);
         if (bd.retornaJogador(login) != null) throw new UsuarioJaCadastradoException(bd.retornaJogador(login));
         bd.cadastrar(new Usuario(login, senha));
     }
@@ -31,7 +38,14 @@ public class UserController {
         Usuario user = bd.retornaJogador(nick);
         if (user == null) 
             throw new UsuarioNaoCadastradoException(nick);
-        user.criaPersonagem(new Personagem(sistema,nomeDoPersonagem,user.getNome()));
+        if ("DND".equals(sistema))
+            user.criaPersonagem(new PersonagemDND(nomeDoPersonagem,user.getNome()));
+        else{
+            if ("GURPS".equals(sistema))
+                user.criaPersonagem(new PersonagemGURPS(nomeDoPersonagem,user.getNome()));
+            else
+                throw new SistemaNaoCadastradoException(sistema);
+        }
     }
     
     public ArrayList<String> getIdsPersos(Usuario user){
@@ -45,7 +59,10 @@ public class UserController {
         return user.getPersonagens().getPersonagem(persoId);
     }
 
-    private boolean validarSenha(String senha) {
-        return senha.length() >= 8 && senha.contains("[a-zA-Z]+");
+    private void validarSenha(String senha) throws SenhaFracaException {
+        if (senha.length() < 8)
+            throw new SenhaFracaException("Senha muito curta");
+        if (!Pattern.compile(".*[a-zA-Z].*").matcher(senha).matches())
+            throw new SenhaFracaException("Senha precisa conter letras");
     }
 }
