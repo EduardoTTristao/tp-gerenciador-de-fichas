@@ -2,7 +2,9 @@ package Model.Entidade;
 
 import Model.Entidade.Exceptions.CaracteristicaJaAdicionadaException;
 import Model.Entidade.Exceptions.CaracteristicaNaoAdicionadaException;
+import Model.Entidade.Exceptions.CategoriaPericiaInvalidaException;
 import Model.Entidade.Exceptions.CustoIncompativelException;
+import Model.Entidade.Exceptions.ModPericiaInvalidaException;
 import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ public class PersonagemGURPS extends Personagem{
     private int fadigaAtual;
     private final ArrayList<Caracteristica> desvantagens;
     private final ArrayList<Caracteristica> vantagens;
+    private final ArrayList<Pericia> pericias;
 
     //para inicializar um personagem de um sistema armazenado
     public PersonagemGURPS (String nome, String donoDoPersonagem) throws SistemaNaoCadastradoException{
@@ -32,6 +35,7 @@ public class PersonagemGURPS extends Personagem{
         
         desvantagens = new ArrayList<>();
         vantagens = new ArrayList<>();
+        pericias = new ArrayList<>();
     }
 
     @Override
@@ -120,6 +124,50 @@ public class PersonagemGURPS extends Personagem{
     public void setFadigaAtual(int fadigaAtual) {
         this.fadigaAtual = fadigaAtual;
     }
+    
+    public void addPericia(String nome, String categoria, int modificador) throws CaracteristicaJaAdicionadaException, CategoriaPericiaInvalidaException, ModPericiaInvalidaException {
+        Pericia ex = null;
+        for (Pericia d : pericias){
+            if (d.getNome().equals(nome)){
+                ex = d;
+                break;
+            }
+        }
+        if (ex != null)
+            throw new CaracteristicaJaAdicionadaException(nome);
+        pericias.add(new Pericia(nome, modificador, categoria));
+    }
+    
+    public void retPericia(String nome) throws CaracteristicaNaoAdicionadaException{
+        Pericia ex = null;
+        for (Pericia d : pericias){
+            if (d.getNome().equals(nome)){
+                ex = d;
+                break;
+            }
+        }
+        if (ex != null)
+            pericias.remove(ex);
+        else
+            throw new CaracteristicaNaoAdicionadaException("Pericias");
+    }
+    
+    public int getCustoTotal() throws CategoriaPericiaInvalidaException{
+        int custo = 0;
         
+        //somando vantagens
+        for (Caracteristica v : vantagens)
+            custo += v.getCusto();
+        //somand desvantagens
+        for (Caracteristica d : desvantagens)
+            custo += d.getCusto();
+        //somando pericias
+        for (Pericia p : pericias)
+            custo += p.getCusto();
+        //somando atributos
+        for (Atributo a : super.getAtributos())
+            custo += ((AtributoGURPS)a).getCusto();
+        return custo;
+    }
         
 }
