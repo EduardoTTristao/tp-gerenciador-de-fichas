@@ -1,7 +1,5 @@
 package Model.Entidade;
 
-import Model.Entidade.Exceptions.AtrInexistenteException;
-
 public class AtributoGURPS extends Atributo{
 
     public AtributoGURPS(String nome) {

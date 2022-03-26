@@ -10,7 +10,6 @@ public class Usuario {
     private final String nome;  //nome do jogador
     private final String senha; //senha do jogador
     private final PersonagemBD personagens; //banco de dados com todos os personagens
-    //private Boolean isMestre; //true caso seja mestre e false caso contrário (a mesa que deveria ter esse controle)
 
     public Usuario(String nome, String senha){
         this.nome = nome;
@@ -42,7 +41,6 @@ public class Usuario {
     }
 
     //gets
-    //public Boolean isMestre(){return isMestre;}
     public String getNome(){return nome;}
     public String getSenha(){return senha;}
     
