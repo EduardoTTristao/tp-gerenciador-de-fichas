@@ -2,7 +2,6 @@ package Model.Entidade;
 
 import Model.Entidade.Exceptions.AcessoNegadoException;
 import Model.Entidade.Exceptions.UsuarioJaCadastradoException;
-import Model.Persistence.PersonagemBD;
 import Model.Persistence.UserBD;
 import java.util.ArrayList;
 
@@ -24,32 +23,38 @@ public class Mesa {
         mestres.cadastrar(mestre);
     }
     
+    //retorna se um usuario em especifico esta na mesa
     public boolean isCadastrado (String nomeUsuario){
         if (jogadores.retornaJogador(nomeUsuario) != null)
             return true;
         return mestres.retornaJogador(nomeUsuario) != null;
     }
     
+    //retorna um usuario da lista de jogadores nao aprovados
     public Usuario getJogNA(String nome){
         return jogadorNA.retornaJogador(nome);
     }
     
+    //retorna um usuario da lista de mestres nao aprovados
     public Usuario getMesNA(String nome){
         return mestresNA.retornaJogador(nome);
     }
     
+    //adiciona usuario a lista de jogadores nao aprovados
     public void addJogadorNA(Usuario user) throws UsuarioJaCadastradoException{
         if (isCadastrado(user.getNome()))
             throw new UsuarioJaCadastradoException(user);
         jogadorNA.cadastrar(user);
     }
     
+    //adiciona usuario a lista de mestres nao aprovados
     public void addMestreNA(Usuario user) throws UsuarioJaCadastradoException{
         if (isCadastrado(user.getNome()))
             throw new UsuarioJaCadastradoException(user);
         mestresNA.cadastrar(user);
     }
     
+    //adiciona jogador a lista de jogadores
     public void addJogador(Usuario user) throws UsuarioJaCadastradoException, AcessoNegadoException{
         boolean jogadorPediu = false;
         for (Usuario jog : jogadorNA.getCadastrados()){

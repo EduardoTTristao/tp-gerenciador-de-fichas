@@ -3,7 +3,6 @@ package Model.Entidade;
 import Model.Entidade.Exceptions.AtrInexistenteException;
 import Model.Entidade.Exceptions.AtributoNegativoException;
 import java.util.ArrayList;
-import java.util.Scanner;
 import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
 import java.util.UUID;
 
@@ -21,7 +20,7 @@ public abstract class Personagem {
     public Personagem (String nome, String donoDoPersonagem) throws SistemaNaoCadastradoException{
 
         //atributos base
-        id = UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString(); //id unico
         this.nome = nome; //armazena o nome do personagem
         this.donoDoPersonagem = donoDoPersonagem;  //determina o nome do jogador que possui aquele personagem
         this.mesa = "Sem mesa"; //inicializa sem pertencer a alguma mesa
@@ -107,11 +106,11 @@ public abstract class Personagem {
         return vidaAtual;
     }
 
-    public void machuca(int dano) {
+    public void machuca(int dano) { //decrementa na vida um dano especificado
         this.vidaAtual -= dano;
     }
 
-    public void cura(int cura) {
+    public void cura(int cura) { //aumenta na vida uma cura especificada
         this.vidaAtual += cura;
     }
 

@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class UserController {
-    private UserBD bd;
+    private final UserBD bd;
     
     public UserController(){
         bd = new UserBD();
     }
     
+    // cadastra um usuario
     public void cadastrar(String login, String senha, String senhaRepetida) throws UsuarioJaCadastradoException, SenhaFracaException, SenhasDiferentesException{
         if (!senha.equals(senhaRepetida)) throw new SenhasDiferentesException();
         validarSenha(senha);
@@ -28,12 +29,14 @@ public class UserController {
         bd.cadastrar(new Usuario(login, senha));
     }
     
+    // autentica um usuario
     public Usuario autentica(String login, String senha){
         Usuario jgd = bd.retornaJogador(login);
         if (jgd != null) if (jgd.getSenha().equals(senha)) return jgd;
         return null;
     }
     
+    // cria um personagem pro usuario
     public void criarPerso(String nick, String sistema, String nomeDoPersonagem) throws SistemaNaoCadastradoException, UsuarioNaoCadastradoException{
         Usuario user = bd.retornaJogador(nick);
         if (user == null) 
@@ -48,10 +51,12 @@ public class UserController {
         }
     }
     
+    // retorna os ids dos seus personagens
     public ArrayList<String> getIdsPersos(Usuario user){
         return user.getPersonagens().listId();
     }
     
+    //retorna um personagem especifico
     public Personagem getPerso(String nick, String persoId) throws UsuarioNaoCadastradoException, PersonagemInexistenteException{
         Usuario user = bd.retornaJogador(nick);
         if (user == null) 
@@ -59,6 +64,7 @@ public class UserController {
         return user.getPersonagens().getPersonagem(persoId);
     }
 
+    //valida a senha
     private void validarSenha(String senha) throws SenhaFracaException {
         if (senha.length() < 8)
             throw new SenhaFracaException("Senha muito curta");
