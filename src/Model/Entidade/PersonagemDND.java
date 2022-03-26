@@ -2,8 +2,6 @@ package Model.Entidade;
 
 import Model.Entidade.Exceptions.SistemaNaoCadastradoException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.UUID;
 
 public class PersonagemDND extends Personagem{
 
