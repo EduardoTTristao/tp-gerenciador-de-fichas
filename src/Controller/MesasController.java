@@ -108,10 +108,9 @@ public class MesasController {
         ArrayList<Personagem> personagens = new ArrayList<>();
         
         for (Usuario jgd : mesa.getJogadores()){
-            PersonagemBD bdP = jgd.getPersonagens();
-            for (String pcid : bdP.listId()){
+            for (String pcid : jgd.getIDSPersos()){
                 try {
-                    personagens.add(bdP.getPersonagem(pcid));
+                    personagens.add(jgd.getPersonagem(pcid));
                 } catch (PersonagemInexistenteException ex) {
                     Logger.getLogger(MesasController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -132,10 +131,9 @@ public class MesasController {
         ArrayList<Personagem> personagens = new ArrayList<>();
         
         for (Usuario mst : mesa.getMestres()){
-            PersonagemBD bdP = mst.getPersonagens();
-            for (String npcid : bdP.listId()){
+            for (String npcid : mst.getIDSPersos()){
                 try {
-                    personagens.add(bdP.getPersonagem(npcid));
+                    personagens.add(mst.getPersonagem(npcid));
                 } catch (PersonagemInexistenteException ex) {
                     Logger.getLogger(MesasController.class.getName()).log(Level.SEVERE, null, ex);
                 }

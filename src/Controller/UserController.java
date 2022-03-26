@@ -53,7 +53,7 @@ public class UserController {
     
     // retorna os ids dos seus personagens
     public ArrayList<String> getIdsPersos(Usuario user){
-        return user.getPersonagens().listId();
+        return user.getIDSPersos();
     }
     
     //retorna um personagem especifico
@@ -61,7 +61,7 @@ public class UserController {
         Usuario user = bd.retornaJogador(nick);
         if (user == null) 
             throw new UsuarioNaoCadastradoException(nick);
-        return user.getPersonagens().getPersonagem(persoId);
+        return user.getPersonagem(persoId);
     }
 
     //valida a senha

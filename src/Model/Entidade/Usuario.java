@@ -2,6 +2,7 @@ package Model.Entidade;
 
 import Model.Entidade.Exceptions.PersonagemInexistenteException;
 import Model.Persistence.PersonagemBD;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,7 +44,9 @@ public class Usuario {
     //gets
     public String getNome(){return nome;}
     public String getSenha(){return senha;}
-    
-    public PersonagemBD getPersonagens(){return personagens;}
+    public ArrayList<String> getIDSPersos(){return personagens.listId();}
+    public Personagem getPersonagem(String personagemID) throws PersonagemInexistenteException{
+        return personagens.getPersonagem(personagemID);
+    }
 
 }
