@@ -42,7 +42,7 @@ public class UserController {
         if (user == null) 
             throw new UsuarioNaoCadastradoException(nick);
         if ("DND".equals(sistema))
-            user.criaPersonagem(new PersonagemDND(nomeDoPersonagem,user.getNome()));
+            user.criaPersonagem(new PersonagemDND(nomeDoPersonagem,user.getNome(),1));
         else{
             if ("GURPS".equals(sistema))
                 user.criaPersonagem(new PersonagemGURPS(nomeDoPersonagem,user.getNome()));
