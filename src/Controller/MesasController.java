@@ -46,7 +46,7 @@ public class MesasController {
     
     //adiciona um jogador a lista de mestres caso o Usuario seja mestre
     public void addJogador(String nome, String nomeMesa, Usuario Mestre) throws MesaInexistenteException, AcessoNegadoException, UsuarioJaCadastradoException{
-        if (isMestre(nomeMesa,Mestre.getNome()))
+        if (!isMestre(nomeMesa,Mestre.getNome()))
             throw new AcessoNegadoException("Não pode cadastrar jogadores sem ser mestre");
         Mesa mesa = bd.retornaMesa(nomeMesa);
         

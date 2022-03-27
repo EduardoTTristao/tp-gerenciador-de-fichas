@@ -14,7 +14,7 @@ public abstract class Personagem {
     private ArrayList<Atributo> atributos = new ArrayList(); //os atributos daquele personagem
     private String mesa;
     private int vida;
-    private int vidaAtual;
+    private int vidaAtual = 0;
 
     //para inicializar um personagem de um sistema armazenado
     public Personagem (String nome, String donoDoPersonagem) throws SistemaNaoCadastradoException{
@@ -115,6 +115,7 @@ public abstract class Personagem {
     }
 
     public void setVida(int vida) {
+        this.vidaAtual += vida-this.vida;
         this.vida = vida;
     }
 

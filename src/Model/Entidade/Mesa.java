@@ -25,9 +25,15 @@ public class Mesa {
     
     //retorna se um usuario em especifico esta na mesa
     public boolean isCadastrado (String nomeUsuario){
-        if (jogadores.retornaJogador(nomeUsuario) != null)
-            return true;
-        return mestres.retornaJogador(nomeUsuario) != null;
+        if (jogadores.retornaJogador(nomeUsuario) != null) {
+            return jogadores.retornaJogador(nomeUsuario).getNome() != null;
+        }
+        else if(mestres.retornaJogador(nomeUsuario) != null){
+            return mestres.retornaJogador(nomeUsuario).getNome() != null;
+        }
+        else{
+            return false;
+        }
     }
     
     //retorna um usuario da lista de jogadores nao aprovados
@@ -87,7 +93,12 @@ public class Mesa {
     }
     
     public boolean isMestre (String nome){
-        return mestres.retornaJogador(nome) != null;
+        if(mestres.retornaJogador(nome) != null){
+            return mestres.retornaJogador(nome).getNome() != null;
+        }
+        else{
+            return false;
+        }
     }
 
     public String getNome() {
