@@ -6,17 +6,17 @@ Para o projeto da disciplina CCF 313 (Programação Orientada a Objetos), será 
 
 ## Introdução ao jogo
 
-RPG(Role-playing game) é um jogo de tabuleiro que consiste em um mestre(ou em alguns casos um conjunto de mestres), ou também conhecido como narrador, um conjunto de n jogadores, na maioria das vezes dados para tornar o jogo mais imprevisível e um sistema que irá obter as regras que irão regir o mundo do jogo. Esse conjunto de jogadores pode variar de 1 à qualquer quantidade que o mestre julgue viável. O jogo é constituido de uma história contada em conjunto que funciona da seguinte maneira: 
+RPG(Role-playing game) é um gênero de jogo (normalmente de tabuleiro) baseado em narrativa com temas variados. O jogo consiste em um mestre (ou em alguns casos um conjunto de mestres) também conhecido como narrador, um conjunto de n jogadores, e um sistema que irá obter as regras que irão regir o mundo do jogo. Esse conjunto de jogadores pode variar de 1 à qualquer quantidade que o mestre julgue viável. O jogo é constituido de uma história contada em conjunto que funciona da seguinte maneira: 
 
-Os jogadores primeiramente fazem seus personagens, esses serão os protagonistas da história. Cada personagem possui um nome, idade, altura, peso, determinados valores que representam seus pontos fracos e fortes como Força, Destreza, Vitalidade, pontos de Vida(os atributos variam de acordo com o sistema), determinadas caracteristicas como por exemplo: cegueira, vício em bebidas, pensamento impussivo ou pensamento cauteloso, medo de aranhas, ódio contra goblins, vinculos, desejos, sonhos, dentre outras coisas.
+Os jogadores primeiramente fazem seus personagens que serão os protagonistas da história. Cada personagem possui um nome, idade, altura, peso, determinados valores que representam seus pontos fracos e fortes como Força, Destreza, Vitalidade, pontos de Vida (atributos estes que variam de acordo com o sistema), determinadas caracteristicas como por exemplo: cegueira, vício em bebidas, pensamento impussivo ou pensamento cauteloso, medo de aranhas, ódio contra goblins, vinculos, desejos, sonhos, dentre outras coisas.
 
-O mestre por sua vez, irá descrever para os jogadores qual situação que os seus personagens estão e os jogadores irão dizer o que seus personagens farão. Portanto, o mestre controla todos os outros personagens do mundo, o cenário, os vilões e além disso é o juiz caso haja alguma dúvida sobre regras ou qualquer outra coisa.
+O mestre por sua vez, irá descrever para os jogadores qual situação que os seus personagens estão e os jogadores irão dizer o que seus personagens farão por meio de uma narrativa. O mestre age controlando todos os outros personagens do mundo, os cenários, vilões e além disso, tem papel de intermediador caso haja alguma dúvida sobre regras ou qualquer outra disputa.
 
 ## O Código
 
 ### Padrão de projeto
 
-O nosso projeto usou o padrão MVC para dividir e organizar o código. Portanto, foi criado todo o código foi organizado entre Model, View e Controller. Model responsável pelas entidades e controle do banco de dados, View responsável pela aparência e interação com usuário e Controller que funciona como uma camada intermediaria entre o Model e o View.
+O nosso projeto usou o padrão MVC para dividir e organizar o código. Portanto, foi criado todo o código foi organizado entre Model, View e Controller. O pacote Model fica responsável pelas entidades e controle do banco de dados, o View responsável pela aparência e interação com usuário e, o Controller, funciona como uma camada intermediária entre Model e View.
 
 ### Model
 
@@ -60,3 +60,21 @@ Os bancos de dados foram feitos com apenas 3 classes. MesasBD que é o banco de 
 ### Controller
 
 Para o controller só houve a necessidade de duas classes. MesasController e UserController. MesasController para gerenciar os acessos as mesas e UserController para gerenciar os acessos dos usuarios.
+
+### View
+
+O programa se utiliza de uma interface por meio de console onde as escolhas dos menus são dadas por números. Ao todo foram criadas 15 classes para a criação das janelas e consequente interação com o usuário. Entre as mais importantes estão:
+
+- Cadastro Mesa: Realizar o cadastro de uma nova mesa no sistema
+- Cadastro Mestre Mesa: Cadastrar um usuario como novo mestre a uma mesa ja existente
+- Cadastro Personagem Mesa: Cadastrar um personagem a uma mesa 
+- Cadastro Personagem Usuario: Criar um novo personagem para o usuario
+- Cadastro Usuario: Criar um novo usuario
+- Cadastro Usuario Mesa: Cadastrar um usuario como novo jogador a uma mesa existente
+- Info Personagem: Mostrar informações sobre o personagem
+- Login Usuario: Autenticação de um usuario ja cadastrado
+- Solicitar Mestre/Jogador: Fazer a solicitação de um usuario para participar de uma mesa como mestre ou jogador
+
+### Execução
+
+Para executar o programa bastar abrir uma janela de console na pasta onde contem o arquivo executável e efetuar o comando "java -jar "GerenciadorFichasRPG.jar" "
