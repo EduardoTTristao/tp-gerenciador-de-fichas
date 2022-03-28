@@ -39,6 +39,16 @@ public class Tela_Inicial_Mesas {
                 case 3:
                     Tela_Cadastro_Mesa cadastromesa = new Tela_Cadastro_Mesa();
                     cadastromesa.mostrar(controlem, usuario);
+                    
+                case 4:
+                    Tela_Solicitar_Usuario solicitauser = new Tela_Solicitar_Usuario();
+                    solicitauser.mostrar(controlem, usuario);
+                    break;
+                    
+                case 5:
+                    Tela_Solicitar_Mestre solicitamestre = new Tela_Solicitar_Mestre();
+                    solicitamestre.mostrar(controlem, usuario);                    
+                    break;
             }
             menu();
             opcao=scan.nextInt();            
@@ -51,6 +61,8 @@ public class Tela_Inicial_Mesas {
         System.out.println("1) Listar Mesas");
         System.out.println("2) Acessar Mesa");
         System.out.println("3) Cadastrar Mesa");
+        System.out.println("4) Solicitar acesso como Jogador");        
+        System.out.println("5) Solicitar acesso como Mestre");        
         System.out.println("0) Voltar");
     }
     

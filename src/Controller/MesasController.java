@@ -10,7 +10,6 @@ import Model.Entidade.Exceptions.MesaCadastradaException;
 import Model.Entidade.Exceptions.PersonagemInexistenteException;
 import Model.Entidade.Exceptions.UsuarioJaCadastradoException;
 import Model.Entidade.Personagem;
-import Model.Persistence.PersonagemBD;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
