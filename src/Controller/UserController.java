@@ -30,7 +30,8 @@ public class UserController {
     }
     
     // autentica um usuario
-    public Usuario autentica(String login, String senha){
+    public Usuario autentica(String login, String senha) throws UsuarioNaoCadastradoException{
+        if (bd.retornaJogador(login) == null) throw new UsuarioNaoCadastradoException(login);
         Usuario jgd = bd.retornaJogador(login);
         if (jgd != null) if (jgd.getSenha().equals(senha)) return jgd;
         return null;
