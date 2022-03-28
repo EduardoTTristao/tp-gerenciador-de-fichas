@@ -1,5 +1,6 @@
 package View;
 
+import Controller.MesasController;
 import Controller.UserController;
 import Model.Entidade.Usuario;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class Tela_Inicial_Personagens {
     Scanner scan = new Scanner(System.in);
     int opcao;
     
-    public void mostrar(UserController controle, Usuario usuario){
+    public void mostrar(UserController controleu, MesasController controlem, Usuario usuario){
     
         menu();
         opcao=scan.nextInt();     
@@ -29,7 +30,12 @@ public class Tela_Inicial_Personagens {
                     break;
                 case 3:
                     Tela_Cadastro_Personagem_Usuario cadperso = new Tela_Cadastro_Personagem_Usuario();
-                    cadperso.mostrar(controle, usuario);
+                    cadperso.mostrar(controleu, usuario);
+                    break;
+                case 4:
+                    Tela_Cadastro_Personagem_Mesa cadpersomesa = new Tela_Cadastro_Personagem_Mesa();
+                    cadpersomesa.mostrar(controlem, controleu, usuario);
+                    
                     break;
                 default:
                     System.out.println("Opção Inválida");
@@ -47,6 +53,7 @@ public class Tela_Inicial_Personagens {
         System.out.println("1) Listar meus Personagens");
         System.out.println("2) Acessar Personagem");
         System.out.println("3) Criar Personagem");
+        System.out.println("4) Adicionar Personagem a uma mesa");        
         System.out.println("0) Voltar");
     }
 }

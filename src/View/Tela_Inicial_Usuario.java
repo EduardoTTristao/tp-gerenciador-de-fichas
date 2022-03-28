@@ -23,7 +23,7 @@ public class Tela_Inicial_Usuario {
                     break;
                 case 2:
                     Tela_Inicial_Personagens inicialpersonagens = new Tela_Inicial_Personagens();
-                    inicialpersonagens.mostrar(controleu, usuario);
+                    inicialpersonagens.mostrar(controleu, controlem, usuario);
                     break;
                 default:
                     System.out.println("Opção Inválida");

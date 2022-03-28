@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Tela_Cadastro_Personagem_Mesa {
-    public void mostrar(MesasController controlem, UserController controleu, Usuario user, String mesa){
+    public void mostrar(MesasController controlem, UserController controleu, Usuario user){
         Scanner scan = new Scanner(System.in);
         scan.useDelimiter("\n");
         
@@ -21,6 +21,9 @@ public class Tela_Cadastro_Personagem_Mesa {
         
         System.out.println("Digite o id do personagem:");
         String id = scan.next(); 
+        
+        System.out.println("Digite o nome da mesa:");
+        String mesa = scan.next(); 
         
         try{
             personagem = controleu.getPerso(user.getNome(), id);

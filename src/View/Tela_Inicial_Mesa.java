@@ -12,10 +12,8 @@ public class Tela_Inicial_Mesa {
     Scanner scan = new Scanner(System.in);
     int opcao;    
     
-    public void mostrar(MesasController controlem, UserController controleu, Usuario usuario){
+    public void mostrar(MesasController controlem, UserController controleu, Usuario usuario, String nomemesa){
 
-        System.out.println("Digite o nome da mesa: ");
-        String nomemesa = scan.next();
         
         menu();
         opcao=scan.nextInt();
@@ -29,32 +27,25 @@ public class Tela_Inicial_Mesa {
                     mostraNPCS(controlem, usuario, nomemesa);
                     break;
                 case 3:
-                    Tela_Cadastro_Personagem_Mesa cadperso = new Tela_Cadastro_Personagem_Mesa();
-                    cadperso.mostrar(controlem, controleu, usuario, nomemesa);
-                    break;
-                case 4:
                     Tela_Cadastro_Usuario_Mesa caduser = new Tela_Cadastro_Usuario_Mesa();
                     caduser.mostrar(controlem, nomemesa, usuario);
                     break;
-                case 5:
+                case 4:
                     Tela_Cadastro_Mestre_Mesa cadmestre = new Tela_Cadastro_Mestre_Mesa();
                     cadmestre.mostrar(controlem, nomemesa, usuario);
                     break;                    
             }
         menu();
         opcao=scan.nextInt();     
-        } 
+        }
     }
-    
-    
     
     public static void menu(){
         System.out.println("\nMenu de Mesa");
         System.out.println("1) Listar PCS");
         System.out.println("2) Listar NPCS");
-        System.out.println("3) Adicionar Personagem");
-        System.out.println("4) Adicionar Jogador");
-        System.out.println("5) Adicionar Mestre");        
+        System.out.println("3) Adicionar Jogador");
+        System.out.println("4) Adicionar Mestre");        
         System.out.println("0) Voltar");}
     
     public void mostraPCS(MesasController controlem, Usuario user, String mesa){
@@ -88,5 +79,6 @@ public class Tela_Inicial_Mesa {
                         System.out.printf("[%d] - %s  \n", i, personagens.get(i).getNome());}
         }
     }
+    
     
 }

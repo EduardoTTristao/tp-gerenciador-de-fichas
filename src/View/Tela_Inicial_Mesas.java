@@ -2,14 +2,13 @@ package View;
 
 import Controller.MesasController;
 import Controller.UserController;
-import Model.Entidade.Mesa;
 import Model.Entidade.Usuario;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Tela_Inicial_Mesas {
     
-    private Mesa mesa;
+
     Scanner scan = new Scanner(System.in);
     int opcao;
     
@@ -28,10 +27,15 @@ public class Tela_Inicial_Mesas {
                         System.out.printf("[%d] - %s  \n", i, mesas.get(i));
                     }
                     break;
+                    
                 case 2:
+                    System.out.println("Digite o nome da mesa: ");
+                    String nomemesa = scan.next();
+                    
                     Tela_Inicial_Mesa inicialmesa = new Tela_Inicial_Mesa();
-                    inicialmesa.mostrar(controlem, controleu, usuario);
+                    inicialmesa.mostrar(controlem, controleu, usuario, nomemesa);
                     break;
+                    
                 case 3:
                     Tela_Cadastro_Mesa cadastromesa = new Tela_Cadastro_Mesa();
                     cadastromesa.mostrar(controlem, usuario);
@@ -49,4 +53,5 @@ public class Tela_Inicial_Mesas {
         System.out.println("3) Cadastrar Mesa");
         System.out.println("0) Voltar");
     }
+    
 }
