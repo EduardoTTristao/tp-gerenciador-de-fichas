@@ -41,13 +41,15 @@ public class TestesMesas {
     }
     
     @Test
-    public void testeGerirMesas() {
+    public void testeGerirMesas() throws UsuarioNaoCadastradoException {
         try {
             UC.cadastrar("Mestrinho", "fireball", "fireball");
         } catch (UsuarioJaCadastradoException | SenhaFracaException | SenhasDiferentesException ex) {
             assert(false);
         }
+        
         Usuario mst = UC.autentica("Mestrinho", "fireball");
+        
         try {
             MC.cadMesa("MesaTop", mst, "DND");
         } catch (MesaCadastradaException | SistemaNaoCadastradoException ex) {

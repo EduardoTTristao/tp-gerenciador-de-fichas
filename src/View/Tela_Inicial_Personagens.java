@@ -26,7 +26,7 @@ public class Tela_Inicial_Personagens {
                     break;
                 case 2:
                     Tela_Info_Personagem infoperso = new Tela_Info_Personagem();
-                    infoperso.mostrar(usuario.getNome());
+                    infoperso.mostrar(controleu, usuario.getNome());
                     break;
                 case 3:
                     Tela_Cadastro_Personagem_Usuario cadperso = new Tela_Cadastro_Personagem_Usuario();

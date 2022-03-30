@@ -52,7 +52,7 @@ public class TestesJogadores {
     }
     
     @Test
-    public void JogadorTest(){
+    public void JogadorTest() throws UsuarioNaoCadastradoException{
         try {
             UC.cadastrar("Marcus", "top10pessoas", "top10pessoas");
         } catch (SenhaFracaException | SenhasDiferentesException | UsuarioJaCadastradoException ex) {
